@@ -1,12 +1,13 @@
 package com.example.hbv.tour;
 
-import javafx.event.ActionEvent;
 import javafx.scene.control.ListView;
-import javafx.scene.input.MouseEvent;
+
 
 import java.util.ArrayList;
 
 public class TourController {
+
+    private Tour selectedTour;
     public ListView<Tour> tourList = new ListView<>();
 
     public void initialize() {
@@ -19,10 +20,12 @@ public class TourController {
     }
 
     public void onTourListClicked() {
-        Tour selectedTour = tourList.getSelectionModel().getSelectedItem();
+        selectedTour = tourList.getSelectionModel().getSelectedItem();
         if (selectedTour == null) {
             return;
         }
         System.out.println(selectedTour);
-    };
+    }
+
+
 }

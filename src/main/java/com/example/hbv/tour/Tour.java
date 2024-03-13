@@ -54,6 +54,6 @@ public class Tour {
 
     @Override
     public String toString() {
-        return name;
+        return name + " - " + category;
     }
 }

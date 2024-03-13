@@ -11,7 +11,7 @@ CREATE TABLE tour (
 CREATE TABLE user (
     id INTEGER PRIMARY KEY,
     name TEXT,
-    username TEXT,
+    username TEXT UNIQUE,
     password TEXT,
     phoneNumber TEXT,
     email TEXT,

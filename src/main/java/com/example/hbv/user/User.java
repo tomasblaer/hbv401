@@ -4,6 +4,7 @@ public class User {
     private final String id;
     private final String name;
     private final String username;
+    private final String password;
     private final String phoneNumber;
     private final String email;
     private final Boolean isAgent; // isGuide?
@@ -12,10 +13,12 @@ public class User {
     private final Array<Tour> bookedTours;
     private final Array<int> bookedTours;
      */
-    public User(String id, String name, String username, String phoneNumber, String email, Boolean isAgent) {
+
+    public User(String id, String name, String username, String password, String phoneNumber, String email, Boolean isAgent) {
         this.id = id;
         this.name = name;
         this.username = username;
+        this.password = password;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.isAgent = isAgent;
@@ -31,6 +34,10 @@ public class User {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getPassword() {
+        return password;
     }
 
     public String getPhoneNumber() {
