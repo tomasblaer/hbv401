@@ -3,6 +3,7 @@ package com.example.hbv;
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.hbv.user.User;
 import com.example.hbv.user.UserDAO;
+import com.example.hbv.util.UserSession;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -16,8 +17,6 @@ import java.io.IOException;
 public class LoginController {
     public TextField usernameInput;
     public PasswordField passwordInput;
-
-//    private User
 
     public void switchScene() throws IOException {
         Stage stage = (Stage) usernameInput.getScene().getWindow();
@@ -45,14 +44,11 @@ public class LoginController {
 
         if (result.verified) {
             try {
+                UserSession.getInstance(loginUser);
                 switchScene();
             } catch (IOException e) {
                 System.out.println(e.getMessage());
             }
         }
-
-
-
-
     }
 }

@@ -2,9 +2,59 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hbv.tour.TourController">
    <children>
-      <ListView fx:id="tourList" onMouseClicked="#onTourListClicked" prefHeight="400.0" prefWidth="200.0" />
+      <AnchorPane prefHeight="405.0" prefWidth="206.0">
+         <children>
+            <Button layoutX="165.0" layoutY="2.0" mnemonicParsing="false" onAction="#onSearch" prefHeight="25.0" prefWidth="37.0" text="🔎" />
+            <ListView fx:id="tourList" layoutX="5.0" layoutY="31.0" onMouseClicked="#onTourListClicked" prefHeight="360.0" prefWidth="197.0" />
+            <TextField fx:id="searchField" layoutX="5.0" layoutY="2.0" prefHeight="25.0" prefWidth="158.0" promptText="Search tour" />
+         </children>
+      </AnchorPane>
+      <AnchorPane fx:id="infoPane" layoutX="206.0" prefHeight="408.0" prefWidth="394.0">
+         <children>
+            <AnchorPane prefHeight="33.0" prefWidth="394.0">
+               <children>
+                  <Label id="tourHeader" fx:id="infoTitle" alignment="CENTER" layoutY="-2.0" prefHeight="33.0" prefWidth="394.0" styleClass="1" text="n/a" textAlignment="CENTER">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+            <GridPane layoutX="14.0" layoutY="53.0" prefHeight="81.0" prefWidth="368.0">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="101.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="302.0" minWidth="10.0" prefWidth="267.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <Label text="Date:">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label text="Capacity:" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="System Bold" size="12.0" />
+                     </font></Label>
+                  <Label fx:id="dateLabel" GridPane.columnIndex="1" />
+                  <Label fx:id="capacityLabel" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+               </children>
+            </GridPane>
+            <TextFlow layoutX="14.0" layoutY="156.0" prefHeight="200.0" prefWidth="368.0">
+               <children>
+                  <Text fx:id="infoText" strokeType="OUTSIDE" strokeWidth="0.0">
+                     <font>
+                        <Font size="16.0" />
+                     </font></Text>
+               </children>
+            </TextFlow>
+            <Button layoutX="14.0" layoutY="369.0" mnemonicParsing="false" onAction="#onBookTour" text="Book tour" />
+         </children></AnchorPane>
    </children>
 </AnchorPane>
