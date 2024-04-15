@@ -1,30 +1,22 @@
 package com.example.hbv.user;
 
 public class User {
-    private final String id;
+    private final int id;
     private final String name;
-    private final String username;
-    private final String password;
-    private final String phoneNumber;
     private final String email;
-    private final Boolean isAgent; // isGuide?
-    /*
-    ?
-    private final Array<Tour> bookedTours;
-    private final Array<int> bookedTours;
-     */
+    private final String phoneNumber;
+    private final Boolean isGuide;
 
-    public User(String id, String name, String username, String password, String phoneNumber, String email, Boolean isAgent) {
+
+    public User(int id, String name, String email, String phoneNumber, Boolean isGuide) {
         this.id = id;
         this.name = name;
-        this.username = username;
-        this.password = password;
-        this.phoneNumber = phoneNumber;
         this.email = email;
-        this.isAgent = isAgent;
+        this.phoneNumber = phoneNumber;
+        this.isGuide = isGuide;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
@@ -32,23 +24,15 @@ public class User {
         return name;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public String getEmail() {
+        return email;
     }
 
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public Boolean getAgent() {
-        return isAgent;
+    public Boolean isGuide() {
+        return isGuide;
     }
 }

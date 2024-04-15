@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Tour {
-    private final String id;
+    private final int id;
     private final String category;
     private final int capacity;
     private final LocalDate date;
@@ -14,7 +14,7 @@ public class Tour {
     private final User guide;
     private final String info;
 
-    public Tour(String id, String category, int capacity, LocalDate date, String name, User guide, String info) {
+    public Tour(int id, String category, int capacity, LocalDate date, String name, User guide, String info) {
         this.id = id;
         this.category = category;
         this.capacity = capacity;
@@ -24,7 +24,7 @@ public class Tour {
         this.info = info;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 

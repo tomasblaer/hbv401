@@ -1,5 +1,6 @@
 package com.example.hbv.tour;
 
+import com.example.hbv.TourController;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ public class TourControllerTester {
     @BeforeEach
     public void setUp() {
         // Guide is set to null because we have not started mapping guides to the tour result mapper
-        expectedTour = new Tour("4", "Hike", 10, LocalDate.parse("2024-05-01"), "Hiking up Úlfarsfell", null, "Relaxed hike with a great view of Reykjavik");
+        expectedTour = new Tour(4, "Hike", 10, LocalDate.parse("2024-05-01"), "Hiking up Úlfarsfell", null, "Relaxed hike with a great view of Reykjavik");
     }
 
     @Test

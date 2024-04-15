@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hbv.tour.TourController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.hbv.TourController">
    <children>
       <AnchorPane prefHeight="405.0" prefWidth="206.0">
          <children>
@@ -38,7 +38,7 @@
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
-                  <Label text="Capacity:" GridPane.rowIndex="1">
+                  <Label text="Remaining slots:" GridPane.rowIndex="1">
                      <font>
                         <Font name="System Bold" size="12.0" />
                      </font></Label>
@@ -55,6 +55,7 @@
                </children>
             </TextFlow>
             <Button layoutX="14.0" layoutY="369.0" mnemonicParsing="false" onAction="#onBookTour" text="Book tour" />
+            <Button layoutX="264.0" layoutY="369.0" mnemonicParsing="false" onAction="#onViewBooked" text="View booked tours" />
          </children></AnchorPane>
    </children>
 </AnchorPane>

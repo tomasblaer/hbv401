@@ -1,17 +1,14 @@
-package com.example.hbv.tour;
+package com.example.hbv;
 
-import com.example.hbv.CheckoutController;
-import javafx.event.ActionEvent;
+import com.example.hbv.tour.Tour;
+import com.example.hbv.tour.TourDAO;
+import com.example.hbv.util.UserSession;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.scene.text.TextFlow;
 import javafx.stage.Stage;
 
 
@@ -30,7 +27,7 @@ public class TourController {
     public Button bookButton;
 
     public void initialize() {
-        ArrayList<Tour> tours =  TourDAO.listTours();
+        ArrayList<Tour> tours =  TourDAO.listAvailableTours();
         if (tours != null) {
             for (Tour tour : tours) {
                 tourList.getItems().add(tour);
@@ -62,15 +59,17 @@ public class TourController {
         setInfo(selectedTour);
     }
 
-    private void switchScene(Tour tour) throws IOException {
+    public void switchScene(Tour tour) throws IOException {
         Stage stage = (Stage) searchField.getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("checkout-view.fxml"));
+
         Parent root =  fxmlLoader.load();
 
         Scene scene = new Scene(root);
 
         CheckoutController controller = fxmlLoader.getController();
         controller.setTour(tour);
+        controller.hydrateView();
 
         stage.setScene(scene);
         stage.setTitle("Checkout");
@@ -79,6 +78,9 @@ public class TourController {
 
     public void onBookTour() {
         Tour selectedTour = tourList.getSelectionModel().getSelectedItem();
+        if (selectedTour == null) {
+            return;
+        }
         try {
             switchScene(selectedTour);
         } catch (IOException e) {
@@ -106,4 +108,13 @@ public class TourController {
         return TourDAO.getToursByName(name);
     }
 
+    public void onViewBooked() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        ArrayList<Tour> bookedTours = TourDAO.listBookedToursForUser(UserSession.getInstance().getUser().getId());
+        StringBuilder bookedTourNames = new StringBuilder();
+        bookedTours.forEach(tour -> bookedTourNames.append(tour.getName()).append(" - ").append(tour.getDate().format(java.time.format.DateTimeFormatter.ofPattern("dd.MM.yyyy"))).append("\n"));
+        alert.setTitle("Booked tours");
+        alert.setHeaderText("Your booked tours: \n" + bookedTourNames);
+        alert.show();
+    }
 }

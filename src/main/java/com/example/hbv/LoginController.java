@@ -8,11 +8,17 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+
+/*
+    Mock login klasi, má taka út en við notum usersession singleton til þess að boka
+    userinn við ferðina sem hann bætir i körfuna.
+ */
 
 public class LoginController {
     public TextField usernameInput;
@@ -31,18 +37,15 @@ public class LoginController {
 
     public void onLogin() {
         String username = usernameInput.getText();
-        String password = passwordInput.getText();
 
         User loginUser = UserDAO.getUser(username);
 
         if (loginUser == null) {
-            System.out.println("User not found / TODO");
-            return;
-        }
-
-        BCrypt.Result result = BCrypt.verifyer().verify(password.toCharArray(), loginUser.getPassword());
-
-        if (result.verified) {
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Login failed");
+            alert.setHeaderText("No user found");
+            alert.show();
+        } else {
             try {
                 UserSession.getInstance(loginUser);
                 switchScene();
